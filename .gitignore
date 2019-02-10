@@ -17,3 +17,16 @@ wp-content/plugins/hello.php
 /sitemap.xml
 /sitemap.xml.gz
 
+https://docs.microsoft.com/azure/devops/pipelines/languages/android
+pool:
+  vmImage: 'macOS-10.13'
+
+steps:
+- task: Gradle@2
+  inputs:
+    workingDirectory: ''
+    gradleWrapperFile: 'gradlew'
+    gradleOptions: '-Xmx3072m'
+    publishJUnitResults: false
+    testResultsFiles: '**/TEST-*.xml'
+    tasks: 'assembleDebug'
